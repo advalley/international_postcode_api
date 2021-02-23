@@ -1,0 +1,1 @@
+{"matches":[{"value":"1000AB Amsterdam, Postbus 50 ","label":"1000AB Amsterdam, Postbus 50","description":"","precision":"Address","context":"nld4Ixme2mExtLJrEKNiUBpaWlNHYln1ztNGsOVItBZ46IFMiOjg0sZ4YpoyEbSnipOx0bd49up2ixccmi8CkTmvDRGKvKzYSyVAxBDcWyfNMNXZDtdAzxXQpWdZUWBRMor99WWm9PufM","highlights":[[0,6],[26,28]]}]}
