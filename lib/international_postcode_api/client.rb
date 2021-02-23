@@ -18,6 +18,21 @@ module InternationalPostcodeApi
       fetch(uri)
     end
 
+    def self.postcode(postcode, house_number, lang = 'NL')
+      if lang == 'NL' && InternationalPostcodeApi.configuration.dynamic_endpoints
+        uri = URI.parse ['https://api.postcode.eu/nl/v1/addresses/postcode', postcode, house_number].join('/')
+        response = fetch(uri)
+        return { street: response.dig('street'), city: response.dig('city') }
+      else
+        query = autocomplete [postcode, house_number].join(' ')
+        context = query['matches'][0].dig('context')
+        if context
+          response = details(context)
+          return { street: response.dig('address').dig('street'), city: response.dig('address').dig('locality')}
+        end
+      end
+    end
+
     private
 
     def self.generate_uri(*path)
