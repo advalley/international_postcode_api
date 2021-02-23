@@ -1,0 +1,1 @@
+{"matches":[{"value":"Nijmegen, Vlaamsegas ","label":"Vlaamsegas","description":"Nijmegen","precision":"Street","context":"nldRnJWH8HPeyF7TPjmAyGTjRNM42s746ieEVv11hVmnJuY3tdBA2dAEQWHoOpUmbFhDykijdSiJxVV9GuwXxEn7cmucqrTCoLFm60zT","highlights":[[0,9]]}]}

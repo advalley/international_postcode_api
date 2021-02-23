@@ -1,5 +1,6 @@
 require "bundler/setup"
 require "international_postcode_api"
+require 'webmock/rspec'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
