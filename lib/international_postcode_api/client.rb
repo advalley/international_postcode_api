@@ -25,8 +25,7 @@ module InternationalPostcodeApi
 
     def self.postcode(postcode, house_number, lang = 'NL')
       if lang == 'NL' && InternationalPostcodeApi.configuration.dynamic_endpoints
-        uri = URI.parse ['https://api.postcode.eu/nl/v1/addresses/postcode', postcode, house_number].join('/')
-        response = fetch(uri)
+        response = dutch_postcode(postcode, house_number)
         return { street: response.dig('street'), city: response.dig('city') }
       else
         query = autocomplete [postcode, house_number].join(' ')
