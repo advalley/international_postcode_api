@@ -69,4 +69,13 @@ RSpec.describe InternationalPostcodeApi::Client do
       expect(response.is_a?(Array)).to eq(true)
     end
   end
+
+  describe '#dutch_postcode' do
+    it 'should return the dutch result for postcodes' do
+      stub_request(:get, 'https://api.postcode.eu/nl/v1/addresses/postcode/1000AB/50/').
+         to_return(status: 200, body: File.read('spec/fixtures/dutch_postcode.txt'))
+
+      response = InternationalPostcodeApi::Client.dutch_postcode('1000AB', '50')
+    end
+  end
 end
