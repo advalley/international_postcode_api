@@ -1,8 +1,5 @@
-# InternationalPostcodeApi
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/international_postcode_api`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+# Ruby wrapper for the postcode.eu endpoints
+https://www.postcode.nl/en/services/adresdata/international
 
 ## Installation
 
@@ -22,7 +19,20 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Create an initializer (config/intializers/international_postcode_api.rb)
+
+```ruby
+InternationalPostcodeApi.configure do |config|
+  config.api_key      = 'your-API-key'
+  config.secret_key   = 'your-secret-key'
+
+  # set new base_uri if new versions are released
+  # config.base_uri = 'https://api.postcode.eu/international/v1'
+
+  # Do not switch to Dutch endpoint for Dutch requests will dynamicly switch by default
+  # config.dynamic_endpoints = false
+end
+```
 
 ## Development
 
