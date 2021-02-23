@@ -13,6 +13,11 @@ module InternationalPostcodeApi
       fetch(uri)
     end
 
+    def self.dutch_postcode(postcode, house_number, house_number_addition = nil)
+      encoded_uri = URI.encode(['https://api.postcode.eu/nl/v1/addresses/postcode', postcode, house_number, house_number_addition].join('/'))
+      fetch URI.parse(encoded_uri)
+    end
+
     def self.supported_countries
       uri = generate_uri('supported-countries')
       fetch(uri)
