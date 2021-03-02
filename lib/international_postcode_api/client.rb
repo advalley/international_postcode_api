@@ -4,7 +4,7 @@ require 'json'
 module InternationalPostcodeApi
   class Client
     def self.autocomplete(term, context = 'nld')
-      uri = generate_uri(:autocomplete, context, term)
+      uri = generate_uri(:autocomplete, context.downcase, term)
       fetch(uri)
     end
 
@@ -23,16 +23,16 @@ module InternationalPostcodeApi
       fetch(uri)
     end
 
-    def self.postcode(postcode, house_number, lang = 'NL')
-      if lang == 'NL' && InternationalPostcodeApi.configuration.dynamic_endpoints
+    def self.postcode(postcode, house_number, lang = 'NLD')
+      if lang == 'NLD' && InternationalPostcodeApi.configuration.dynamic_endpoints
         response = dutch_postcode(postcode, house_number)
         return { street: response.dig('street'), city: response.dig('city') }
       else
-        query = autocomplete [postcode, house_number].join(' ')
+        query = autocomplete("#{postcode} #{house_number}", lang)
         context = query['matches'][0].dig('context')
         if context
           response = details(context)
-          return { street: response.dig('address').dig('street'), city: response.dig('address').dig('locality')}
+          return { street: response.dig('address')&.dig('street'), city: response.dig('address')&.dig('locality')}
         end
       end
     end
